@@ -1,0 +1,105 @@
+﻿@model List<Employee>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>员工管理</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <style>
+        #tb1 {
+            width: 100%;
+            height: 440px;
+            table-layout: fixed;
+        }
+        #tb1 tr, td, th {
+            border: 1px solid gray;
+            text-align: center;
+        }
+        #tb1 tr, td {
+            height: 40px;
+        }
+        #tb1 th {
+            width: 60px;
+        }
+        #div_input div{
+            width: 200px;
+            float: left;
+            margin-left: 25px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" >
+        <div style="width:100%;height:200px;">
+            <div id="div_input">
+                <div>员工编号：<input name="Eid" /></div>
+                <div>员工姓名：<input name="Ename" /></div>
+                <div>性别：    <input name="Gender" /></div>
+                <div>出生日期：<input name="Birthday" /></div>
+                <div>身份证号：<input name="Idcard" /></div>
+                <div>婚姻状况：<input name="Wedlock" /></div>
+                <div>名族：    <input name="Nation" /></div>
+                <div>籍贯：    <input name="Nationplace" /></div>
+                <div>政治面貌：<input name="Politicid" /></div>
+                <div>邮箱：    <input name="Email" /></div>
+                <div>电话号码：<input name="Phone" /></div>
+                <div>联系地址：<input name="Address" /></div>
+                <div>所属部门：<input name="Did" /></div>
+                <div>职称：    <input name="Jodlevelid" /></div>
+                <div>入职日期：<input name="Degindate" /></div>
+                <div>毕业院校：<input name="School" /></div>
+            </div>
+            <div style="margin-top: 0;float: left;">
+                <button type="submit" asp-action="AddEmployee">添加员工</button>
+                <button type="submit" asp-action="UpEmpolyee">修改员工</button>
+            </div>
+        </div>
+    </form>
+    <div style="width:100%;height:440px;overflow:scroll">
+        <table id="tb1" class="table-sm">
+            <thead>
+                <tr>
+                    <th>员工姓名</th>
+                    <th>性别</th>
+                    <th style="width:130px;">身份证号</th>
+                    <th>籍贯</th>
+                    <th style="width:70px;">电话号码</th>
+                    <th>联系地址</th>
+                    <th>职称</th>
+                    <th>入职日期</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var film in Model)
+                {
+                    <tr>
+                        <td> @film.Ename </td>
+                        <td> @film.Gender </td>
+                        <td> @film.Idcard </td>
+                        <td> @film.Nationplace </td>
+                        <td> @film.Phone </td>
+                        <td> @film.Address </td>
+                        <td> @film.Jodlevelid </td>
+                        <td> @film.Degindate</td>
+                        <td>
+                            <a href="#" onclick="REMOVE(this.name)" name=@film.Eid>删除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function REMOVE(id) {
+            if (confirm("你确定要删除吗？") == true) {
+                //location.href = "DelFilm?id=" + id;
+            }
+
+        }
+    </script>
+</body>
+</html>

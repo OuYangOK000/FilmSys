@@ -1,0 +1,47 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录界面</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <style type="text/css">
+        #div_dl{
+            color:darkgray;
+            font-size:3em;
+            padding-left: 35px;
+        }
+        #div_button{
+            border: 1px solid darkgray;
+            width: 100px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-left: 10%;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <form method="post" asp-action="First">
+        <div style="margin-top:13%;margin-left:42%;">
+            <div id="div_dl">
+                登录界面
+            </div>
+            <div style="margin-top:50px;">
+                登录名：&nbsp;&nbsp;&nbsp;<input type="text" name="user" value="zjj"/>
+                @if (Model != null)
+                {
+                    <span>@Model</span>
+                }
+                <br />
+                登录密码：<input type="text" name="pwd" value="123456"/><br />
+                <button type="submit" id="div_button">登录</button>
+            </div>
+        </div>
+        </form>
+</body>
+</html>
